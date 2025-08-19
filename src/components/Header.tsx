@@ -47,7 +47,7 @@ const Header = () => {
             <a href="#home" className="text-foreground hover:text-primary transition-colors font-medium">
               Home
             </a>
-            <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
               Services
             </a>
             <a href="/testimonials" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -56,10 +56,10 @@ const Header = () => {
             <a href="/career-library" className="text-foreground hover:text-primary transition-colors font-medium">
               Career Options
             </a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
             </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Contact Us
             </a>
           </div>
@@ -88,7 +88,7 @@ const Header = () => {
               <a href="#home" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
                 Home
               </a>
-              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
+              <a href="/services" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
                 Services
               </a>
               <a href="/testimonials" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
@@ -97,10 +97,10 @@ const Header = () => {
               <a href="/career-library" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
                 Career Options
               </a>
-              <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
+              <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
                 About Us
               </a>
-              <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
+              <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium px-2 py-1">
                 Contact Us
               </a>
               <Button className="bg-gradient-primary hover:opacity-90 transition-opacity mt-4">
