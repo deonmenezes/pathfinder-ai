@@ -8,6 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const careerCategories = [
   {
@@ -414,64 +416,103 @@ const careerCategories = [
 
 const CareerLibrary: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20 py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-4">Career Library</h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              See all major career options out there and learn about each one of them.
-            </p>
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main className="py-16 bg-gradient-to-br from-background to-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center mb-12">
+              <h1 className="text-5xl font-bold text-foreground mb-6">
+                Career <span className="bg-gradient-primary bg-clip-text text-transparent">Library</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+                Explore over 800+ career opportunities across 24 different fields. Discover your passion and find the perfect career path with our comprehensive career library.
+              </p>
+              
+              {/* Search Bar */}
+              <div className="relative max-w-lg mx-auto mb-8">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search careers by name or field..."
+                  className="pl-12 pr-4 py-4 text-lg rounded-xl border-2 bg-background/50 backdrop-blur-sm"
+                />
+              </div>
+              
+              <p className="text-sm text-muted-foreground">
+                Click on any field below to explore all available career options
+              </p>
+            </div>
+
+            {/* Career Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {careerCategories.map((category) => (
+                <DropdownMenu key={category.id}>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="h-auto p-6 justify-start bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 group shadow-md hover:shadow-lg border-2 hover:border-primary/30"
+                    >
+                      <div className="flex items-center space-x-4 w-full">
+                        <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                          {category.icon}
+                        </div>
+                        <div className="flex-1 text-left">
+                          <h3 className="font-semibold text-base mb-1">{category.title}</h3>
+                          <p className="text-sm text-muted-foreground">36+ Career Options</p>
+                        </div>
+                        <ChevronDown className="h-5 w-5 group-hover:rotate-180 transition-transform duration-300 text-primary" />
+                      </div>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    className="w-96 max-h-96 overflow-y-auto bg-popover border-2 shadow-xl rounded-xl"
+                    align="start"
+                    sideOffset={8}
+                  >
+                    <div className="p-3 border-b border-border bg-muted/30">
+                      <h4 className="font-semibold text-foreground flex items-center gap-2">
+                        <span className="text-lg">{category.icon}</span>
+                        {category.title} Careers
+                      </h4>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {category.careers.length} career options available
+                      </p>
+                    </div>
+                    {category.careers.map((career, index) => (
+                      <DropdownMenuItem
+                        key={index}
+                        className="cursor-pointer hover:bg-accent hover:text-accent-foreground py-3 px-4 transition-colors duration-200"
+                      >
+                        <span className="text-sm font-medium">{career}</span>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ))}
+            </div>
             
-            {/* Search Bar */}
-            <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Search by name or career..."
-                className="pl-10 pr-4 py-2"
-              />
+            {/* Additional Info Section */}
+            <div className="mt-16 text-center">
+              <div className="bg-card border-2 border-primary/10 rounded-2xl p-8 max-w-4xl mx-auto">
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  Need Personalized Career Guidance?
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  Our expert career counselors can help you identify the perfect career path based on your interests, skills, and aspirations.
+                </p>
+                <Button className="bg-gradient-primary hover:opacity-90 transition-opacity text-lg px-8 py-3">
+                  Book Free Consultation
+                </Button>
+              </div>
             </div>
           </div>
-
-          {/* Career Categories Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {careerCategories.map((category) => (
-              <DropdownMenu key={category.id}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className="h-auto p-4 justify-start bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group"
-                  >
-                    <div className="flex items-center space-x-3 w-full">
-                      <div className="text-2xl">{category.icon}</div>
-                      <div className="flex-1 text-left">
-                        <h3 className="font-semibold text-sm">{category.title}</h3>
-                        <p className="text-xs text-muted-foreground">36 Career Options</p>
-                      </div>
-                      <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" />
-                    </div>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  className="w-80 max-h-96 overflow-y-auto bg-popover border shadow-lg"
-                  align="start"
-                >
-                  {category.careers.map((career, index) => (
-                    <DropdownMenuItem
-                      key={index}
-                      className="cursor-pointer hover:bg-accent hover:text-accent-foreground py-2 px-3"
-                    >
-                      <span className="text-sm">{career}</span>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ))}
-          </div>
         </div>
-      </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };
