@@ -8,6 +8,7 @@ import {
   TrendingUp, 
   MessageCircle 
 } from "lucide-react";
+import EmailFormModal from "@/pages/EmailFormModel";
 
 const services = [
   {
@@ -20,7 +21,7 @@ const services = [
     icon: GraduationCap,
     title: "Academic Guidance",
     description: "Strategic planning for course selection, college admissions, and academic pathway optimization",
-    features: ["Course Selection", "College Guidance", "Scholarship Advice", "Academic Planning"]
+    features: ["Right Subject Choice", "Course & Degree Planning", "Skill Development ", "Career Road Map"]
   },
   {
     icon: Briefcase,
@@ -38,13 +39,13 @@ const services = [
     icon: TrendingUp,
     title: "Career Planning",
     description: "Long-term strategic career roadmaps with milestone tracking and regular progress reviews",
-    features: ["5-Year Planning", "Goal Setting", "Progress Tracking", "Regular Reviews"]
+    features: ["1-Year Planning", "Goal Setting", "Progress Tracking", "Regular Reviews"]
   },
   {
     icon: MessageCircle,
     title: "One-on-One Counselling",
-    description: "Personalized career counselling sessions with expert guidance tailored to your unique situation",
-    features: ["Personal Sessions", "Expert Guidance", "Confidential Support", "Follow-up Care"]
+    description: "Personalized career counselling sessions with expert guidance tailored to your unique ability",
+    features: ["Personal Sessions", "Expert Guidance", "Confidential Support", "Continuous Followup"]
   }
 ];
 
@@ -93,12 +94,18 @@ const ServicesSection = () => {
                     ))}
                   </ul>
 
+             <EmailFormModal
+              trigger={
                   <Button 
                     variant="outline" 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
-                  >
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                     Learn More
                   </Button>
+                     }
+            />
+           
+            
+           
                 </div>
               </div>
             </Card>
@@ -106,14 +113,27 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-16">
-          <Button 
+          {/* <Button 
             size="lg"
             className="bg-gradient-primary hover:opacity-90 text-lg px-8 py-3"
           >
             Schedule Free Consultation
-          </Button>
+          </Button> */}
+
+        
+            <EmailFormModal
+              trigger={
+               <Button 
+            size="lg"
+            className="bg-gradient-primary hover:opacity-90 text-lg px-8 py-3"
+          >
+                  Book Free Consultation
+                </Button>
+              }
+            />
+          </div>
         </div>
-      </div>
+  
     </section>
   );
 };

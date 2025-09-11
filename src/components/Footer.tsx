@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-
+  import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -21,16 +21,16 @@ const Footer = () => {
               Empowering individuals to discover their true potential and build successful careers through expert guidance and scientific assessment.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
+              <a href="https://www.facebook.com/share/19UjMAaXXL/" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
+              {/* <a href="https://x.com/Chriscounseling?t=EnsUkAZyn-ga17k7K0W5wQ&s=09" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
                 <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
+              </a> */}
+              <a href="https://www.linkedin.com/company/chris-pathfinder/" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
+              <a href="https://www.instagram.com/chris.pathfinder?igsh=MXAwczNvenZldXBzbg==" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -69,18 +69,18 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 mt-1 opacity-90" />
                 <div>
-                  <p className="opacity-90">123 Career Street</p>
-                  <p className="opacity-90">Business District</p>
-                  <p className="opacity-90">New York, NY 10001</p>
+                  <p className="opacity-90">93 East ,1102, Mahakali </p>
+                  <p className="opacity-90">Caves Road, Andheri (East ) </p>
+                  <p className="opacity-90">Mumbai 400093</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 opacity-90" />
-                <span className="opacity-90">+1 (555) 123-4567</span>
+                <span className="opacity-90">+91 8779193439</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 opacity-90" />
-                <span className="opacity-90">info@chrispathfinder.com</span>
+                <span className="opacity-90">chris.pathfinder.72@gmail.com</span>
               </div>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
@@ -98,12 +98,24 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm opacity-90">
-              © 2024 Chris Pathfinder. All rights reserved.
+              © 2013 Chris Pathfinder. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Privacy Policy</a>
-              <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Terms of Service</a>
-              <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Cookie Policy</a>
+              {/* <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Privacy Policy</a> */}
+                <Link
+        to="/privacy-policy"
+        className="opacity-90 hover:opacity-100 transition-opacity"
+      >
+        Privacy Policy
+      </Link>
+<Link
+  to="/terms"
+  className="opacity-90 hover:opacity-100 transition-opacity"
+>
+  Terms of Service
+</Link>
+              {/* <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Terms of Service</a> */}
+              {/* <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Cookie Policy</a> */}
             </div>
           </div>
         </div>

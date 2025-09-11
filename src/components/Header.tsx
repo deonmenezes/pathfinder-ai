@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
-
+import EmailFormModal from "@/pages/EmailFormModel";
+import logo from "../assets/logo.png";
+import projectName from "../assets/chris.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -15,15 +17,15 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>+91 8779193439</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>info@chrispathfinder.com</span>
+              <span>chris.pathfinder.72@gmail.com</span>
             </div>
           </div>
           <div className="hidden md:block">
-            <span>Expert Career Guidance Since 2010</span>
+            <span>Expert Career Guidance Since 2013</span>
           </div>
         </div>
       </div>
@@ -33,18 +35,23 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="bg-gradient-primary text-primary-foreground rounded-lg p-2">
-              <span className="text-xl font-bold">CP</span>
+            <div className="bg-gradient-primary text-primary-foreground rounded-lg ">
+              <span className="text-xl font-bold">
+               <img src={logo} alt="" className="w-[40px] h-auto" />
+
+              </span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">Chris Pathfinder</h1>
-              <p className="text-xs text-muted-foreground">Career Guidance Expert</p>
+             
+               <img src={projectName} alt="" className="w-[200px] h-auto" />
+              {/* <h1 className="text-xl font-bold text-primary">Chris Pathfinder</h1> */}
+              {/* <p className="text-xs text-muted-foreground">Career Guidance Expert</p> */}
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="#home" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Home
             </a>
             <a href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -65,11 +72,16 @@ const Header = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button className="bg-gradient-primary hover:opacity-90 transition-opacity">
-              Book Free Consultation
-            </Button>
-          </div>
+     <div className="hidden lg:block">
+  <EmailFormModal
+    trigger={
+      <Button className="bg-gradient-primary hover:opacity-90 transition-opacity">
+        Book Free Consultation
+      </Button>
+    }
+  />
+</div>
+
 
           {/* Mobile menu button */}
           <button

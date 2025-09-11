@@ -3,13 +3,13 @@ import { Users, Clock, Target, Award } from "lucide-react";
 const stats = [
   {
     icon: Users,
-    value: "5,000+",
+    value: "500+",
     label: "Students Guided",
     description: "Successful career transformations"
   },
   {
     icon: Clock,
-    value: "15,000+",
+    value: "2500+",
     label: "Counselling Hours",
     description: "Expert guidance provided"
   },

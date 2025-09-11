@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import mam from "../assets/mam.jpeg";
 import { Award, Users, Target, Heart } from "lucide-react";
 
 const About = () => {
@@ -75,7 +76,7 @@ const About = () => {
               <div className="bg-gradient-primary/10 rounded-2xl p-8 text-center">
                 <div className="space-y-6">
                   <div>
-                    <div className="text-4xl font-bold text-primary">5000+</div>
+                    <div className="text-4xl font-bold text-primary">500+</div>
                     <div className="text-muted-foreground">Careers Transformed</div>
                   </div>
                   <div>
@@ -83,7 +84,7 @@ const About = () => {
                     <div className="text-muted-foreground">Success Rate</div>
                   </div>
                   <div>
-                    <div className="text-4xl font-bold text-primary">14+</div>
+                    <div className="text-4xl font-bold text-primary">12+</div>
                     <div className="text-muted-foreground">Years of Excellence</div>
                   </div>
                 </div>
@@ -137,9 +138,14 @@ const About = () => {
 
           <div className="max-w-2xl mx-auto">
             <Card className="p-8 text-center border-0 shadow-elegant">
-              <div className="w-32 h-32 bg-gradient-primary rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary-foreground">CP</span>
-              </div>
+           <div className="w-32 h-32 bg-gradient-primary rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+  <img
+    src={mam}
+    alt="Profile"
+    className="w-full h-full object-cover rounded-full"
+  />
+</div>
+
               <h3 className="text-3xl font-bold text-foreground mb-2">
                 Chris Pathfinder
               </h3>

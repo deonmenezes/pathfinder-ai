@@ -18,7 +18,7 @@ const slides = [
     buttonText: "Take Assessment"
   },
   {
-    title: "Join 10,000+ Success Stories",
+    title: "Join 95% Success Stories",
     subtitle: "Proven track record of career transformation",
     description: "From confused students to successful professionals - we've helped thousands find their dream careers across various industries.",
     icon: Users,
