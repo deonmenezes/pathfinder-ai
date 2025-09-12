@@ -1,30 +1,31 @@
 "use client";
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 
 const TermsAndConditions = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-12 px-6 lg:px-24">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-4xl font-bold text-indigo-700">
-          Terms & Conditions
-        </h1>
-        <p className="text-gray-600 mt-2">Chris Pathfinder</p>
-        <p className="text-sm text-gray-500 mt-1">
-          Effective Date: June 10, 2025
-        </p>
-      </motion.div>
+    <div className="min-h-screen bg-background">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="bg-gradient-primary text-primary-foreground py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Terms & Conditions
+          </h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+            Please read our Terms & Conditions carefully before using our
+            services
+          </p>
+        </div>
+      </section>
 
       {/* Content */}
-      <div className="space-y-6">
+      <div className="container mx-auto px-6 lg:px-24 py-12 space-y-6">
         {[
           {
             title: "1. Overview",
@@ -125,6 +126,8 @@ const TermsAndConditions = () => {
           </motion.div>
         ))}
       </div>
+
+      <Footer />
     </div>
   );
 };

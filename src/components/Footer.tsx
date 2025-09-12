@@ -1,5 +1,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
   import { Link } from "react-router-dom";
+  import logo from "../assets/logo.png";
+import projectName from "../assets/chris.png";
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -9,8 +11,10 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="bg-white/20 rounded-lg p-2">
-                <span className="text-xl font-bold">CP</span>
+              <div className="bg-white/20 rounded-lg ">
+                <span className="text-xl font-bold">
+                  <img src={logo} alt=""  className="w-[45px] h-auto"/>
+                </span>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Chris Pathfinder</h3>
@@ -39,14 +43,41 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="space-y-6">
             <h4 className="text-lg font-semibold">Quick Links</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#home" className="opacity-90 hover:opacity-100 transition-opacity">Home</a></li>
-              <li><a href="#services" className="opacity-90 hover:opacity-100 transition-opacity">Services</a></li>
-              <li><a href="#testimonials" className="opacity-90 hover:opacity-100 transition-opacity">Testimonials</a></li>
-              <li><a href="#career-options" className="opacity-90 hover:opacity-100 transition-opacity">Career Options</a></li>
-              <li><a href="#about" className="opacity-90 hover:opacity-100 transition-opacity">About Us</a></li>
-              <li><a href="#contact" className="opacity-90 hover:opacity-100 transition-opacity">Contact Us</a></li>
-            </ul>
+           {/* import { Link } from "react-router-dom"; */}
+
+<ul className="space-y-3 text-sm">
+  <li>
+    <Link to="/" className="opacity-90 hover:opacity-100 transition-opacity">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link to="/services" className="opacity-90 hover:opacity-100 transition-opacity">
+      Services
+    </Link>
+  </li>
+  <li>
+    <Link to="/testimonials" className="opacity-90 hover:opacity-100 transition-opacity">
+      Testimonials
+    </Link>
+  </li>
+  <li>
+    <Link to="/career-library" className="opacity-90 hover:opacity-100 transition-opacity">
+      Career Options
+    </Link>
+  </li>
+  <li>
+    <Link to="/about" className="opacity-90 hover:opacity-100 transition-opacity">
+      About Us
+    </Link>
+  </li>
+  <li>
+    <Link to="/contact" className="opacity-90 hover:opacity-100 transition-opacity">
+      Contact Us
+    </Link>
+  </li>
+</ul>
+
           </div>
 
           {/* Services */}

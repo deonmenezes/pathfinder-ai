@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent, ReactNode } from "react";
-import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";  
-// const siteKey = import.meta.env.SITEKEY;
-
 import {
   Dialog,
   DialogContent,
@@ -16,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 // ✅ Define props type
 interface EmailFormModalProps {
@@ -49,7 +45,8 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
     message: "",
   });
 
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null); // ✅ Captcha state
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false); // ✅ Loader state
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -62,94 +59,60 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
     setCaptchaValue(value);
   };
 
-  // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-
-  //   // if (!captchaValue) {
-  //   //   alert("⚠️ Please verify the captcha before submitting.");
-  //   //   return;
-  //   // }
-
-  // emailjs
-  // .send(
-  //   "service_xdmkdrp", // ✅ your Service ID
-  //   "template_zbpmuz9",       // 🔥 replace with your actual Template ID from dashboard
-  //   {
-  //     from_name: formData.fullName,   // must match EmailJS template variable names
-  //     dob: formData.dob,
-  //     email: formData.email,
-  //     phone: formData.phone,
-  //     profession: formData.profession,
-  //     gender: formData.gender,
-  //     message: formData.message,
-  //   },
-  //   "wLPPuktaqroB46qXE" // ✅ your Public Key (User ID)
-  // )
-  // .then(
-  //   () => {
-  //     alert("✅ Message sent successfully!");
-  //     setFormData({
-  //       fullName: "",
-  //       dob: "",
-  //       email: "",
-  //       phone: "",
-  //       profession: "",
-  //       gender: "",
-  //       message: "",
-  //     });
-  //     setCaptchaValue(null); // reset captcha
-  //   },
-  //   (error) => {
-  //     alert("❌ Failed to send message. Try again.");
-  //     console.error("EmailJS Error:", error);
-  //   }
-  // );
-  // };
-
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    e.preventDefault();
+    setLoading(true); // show loader
 
-  try {
-    const response = await fetch("https://pathfinder-backend-mmle.onrender.com/api/form", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert("✅ Message sent successfully!");
-      setFormData({
-        fullName: "",
-        dob: "",
-        email: "",
-        phone: "",
-        profession: "",
-        gender: "",
-        message: "",
+    try {
+      const response = await fetch("https://pathfinder-backend-1.onrender.com/api/form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    } else {
-      alert("❌ Failed to send message: " + data.message);
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("✅ Message sent successfully!");
+        setFormData({
+          fullName: "",
+          dob: "",
+          email: "",
+          phone: "",
+          profession: "",
+          gender: "",
+          message: "",
+        });
+      } else {
+        alert("❌ Failed to send message: " + data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("❌ Something went wrong!");
+    } finally {
+      setLoading(false); // hide loader
     }
-  } catch (error) {
-    console.error(error);
-    alert("❌ Something went wrong!");
-  }
-};
+  };
 
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-xl">
+
+      {/* ✅ Popup always on top */}
+      <DialogContent className="sm:max-w-xl z-[9999]">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
 
-        {/* <Card className='p-8 border-0 shadow-elegant shadow-lg'> */}
+        {/* Loader overlay */}
+        {loading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white/70 z-[10000] rounded-lg">
+            <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
+
         <form className="space-y-6" onSubmit={handleSubmit}>
-          {/*   Name */}
+          {/* Name & DOB */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="fullName"> Name</Label>
@@ -167,7 +130,6 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
                 id="dob"
                 name="dob"
                 type="date"
-                placeholder="Enter your full name"
                 value={formData.dob}
                 onChange={handleChange}
               />
@@ -220,7 +182,7 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
 
             <div className="space-y-2">
               <Label>Gender</Label>
-              <div className="flex items-center gap-3  px-2 py-2">
+              <div className="flex items-center gap-3 px-2 py-2">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
@@ -271,26 +233,18 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
             />
           </div>
 
-          {/* ✅ Captcha */}
-          {/* <div className="flex justify-center">
-            <ReCAPTCHA
-              sitekey='6LeZmcMrAAAAAANEF5S3JpRBbYGpHOWKFEVrHvE5' // 🔑 Replace with reCAPTCHA v2 site key
-              onChange={handleCaptchaChange}
-            />
-          </div> */}
-
           {/* Submit Button */}
           <div className="text-center">
             <Button
               type="submit"
               size="lg"
               className="bg-gradient-primary hover:opacity-90 px-8"
+              disabled={loading}
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </Button>
           </div>
         </form>
-        {/* </Card> */}
       </DialogContent>
     </Dialog>
   );

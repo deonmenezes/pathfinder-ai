@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import TermsAndConditions from "./pages/termsandconditon";
 import PrivacyPolicy from "./pages/privacyPolicy";
+import ScrollToTop from "./components/scrollToTop";
+// import ScrollToTop from "./components/ScrollToTop"; // 👈 import
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop /> {/* 👈 ensure scrolling works on every route change */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/career-library" element={<CareerLibrary />} />
@@ -28,10 +31,10 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsAndConditions />} />
+          {/* catch-all should always be last */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

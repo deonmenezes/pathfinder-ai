@@ -1,26 +1,31 @@
 "use client";
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-12 px-6 lg:px-24">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-4xl font-bold text-indigo-700">Privacy Policy</h1>
-        <p className="text-gray-600 mt-2">Chris Pathfinders</p>
-        <p className="text-sm text-gray-500 mt-1">Effective Date: August 20, 2025</p>
-      </motion.div>
+    <div className="min-h-screen bg-background">
+      {/* ✅ Common Header */}
+      <Header />
 
-      {/* Content */}
-      <div className="space-y-6">
+      {/* ✅ Hero Section (same as Services) */}
+      <section className="bg-gradient-primary text-primary-foreground py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Privacy Policy
+          </h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+            Chris Pathfinders — Effective Date: August 20, 2025
+          </p>
+        </div>
+      </section>
+
+      {/* ✅ Content Section */}
+      <div className="container mx-auto px-4 py-16 space-y-8">
         {[
           {
             title: "Introduction",
@@ -99,14 +104,21 @@ We do not sell your personal data to third parties.`,
           >
             <Card className="shadow-lg rounded-2xl border border-gray-200 hover:shadow-2xl transition duration-300">
               <CardContent className="p-6 space-y-4">
-                <h2 className="text-xl font-semibold text-indigo-600">{section.title}</h2>
+                <h2 className="text-xl font-semibold text-primary">
+                  {section.title}
+                </h2>
                 <Separator />
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">{section.content}</p>
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {section.content}
+                </p>
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
+
+      {/* ✅ Common Footer */}
+      <Footer />
     </div>
   );
 };
