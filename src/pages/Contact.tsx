@@ -9,12 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  // const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const [formData, setFormData] = useState({
     fullName: "",
@@ -24,7 +24,7 @@ const Contact = () => {
     profession: "",
     gender: "",
     message: "",
-    // captchaToken: "",
+    captchaToken: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -50,10 +50,10 @@ const Contact = () => {
       return;
     }
 
-    // if (!formData.captchaToken) {
-    //   setFormStatus({ message: 'Please complete the reCAPTCHA.', color: 'red' });
-    //   return;
-    // }
+    if (!formData.captchaToken) {
+      setFormStatus({ message: 'Please complete the reCAPTCHA.', color: 'red' });
+      return;
+    }
 
     setLoading(true);
     setFormStatus({ message: 'Sending your message...', color: 'gray' });
@@ -112,11 +112,11 @@ const Contact = () => {
           profession: "",
           gender: "",
           message: "",
-          // captchaToken: "",
+          captchaToken: "",
         });
         
         // Reset reCAPTCHA
-        // recaptchaRef.current?.reset();
+        recaptchaRef.current?.reset();
         
         // Reset form ref if needed
         if (formRef.current) {
@@ -336,14 +336,14 @@ const Contact = () => {
                   />
                 </div>
                 
-                {/* <div className="flex justify-center">
+                <div className="flex justify-center">
                   <ReCAPTCHA 
                     ref={recaptchaRef}
                     sitekey="6LdTeN4rAAAAADytWSvmwLDpVCMiqBMjvHO9tedM" 
                     onChange={handleCaptchaChange} 
                   />
                 </div>
-                 */}
+                
                 <div className="text-center">
                   <Button 
                     type="submit" 
