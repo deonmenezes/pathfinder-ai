@@ -7,6 +7,7 @@ declare module "@emailjs/browser" {
   }
 
   interface EmailJS {
+    init(publicKey: any): unknown;
     send: (
       serviceID: string,
       templateID: string,
