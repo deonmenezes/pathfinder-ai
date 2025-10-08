@@ -60,7 +60,7 @@ const Contact = () => {
 
     try {
       // EmailJS configuration
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_x6ka1b8';
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_pxts1dm'
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_a7yi44v';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9y3JcD65WyL-ug2lS';
 
