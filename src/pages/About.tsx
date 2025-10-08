@@ -54,20 +54,20 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-xl text-muted-foreground">
-                Founded in 2010, Chris Pathfinder has been at the forefront of career guidance and professional development
+                Founded in 2013, Chris Pathfinder has been at the forefront of career guidance and professional development
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold text-foreground">
-                  Expert Career Guidance Since 2010
+                  Expert Career Guidance Since 2013
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  With over a decade of experience in career counseling and professional development, Chris Pathfinder has helped thousands of individuals discover their true calling and achieve their professional goals.
+  At Chris Pathfinder, we help students discover the right career path with clarity and confidence. Through our 5-dimensional psychometric test, we assess personality, interests, aptitude, emotional intelligence, and learning style. The AI-generated report then provides a scientific roadmap for making informed career choices.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our comprehensive approach combines psychometric assessments, industry insights, and personalized guidance to create tailored career pathways for each client.
+                  Our mission is to transform lost and unsure students into confident decision-makers. With personalized, data-driven guidance, we turn career confusion into a clear vision for the future. At Chris Pathfinder, we work with you to unlock true potential and build a future that excites.
                 </p>
                 <Button className="bg-gradient-primary hover:opacity-90">
                   Schedule Consultation
@@ -132,7 +132,7 @@ const About = () => {
               Meet Our Expert
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Led by Chris, a certified career counselor with extensive experience in helping individuals achieve their professional goals
+              Led by Pricilla Ramani, a certified career counselor with extensive experience in helping individuals achieve their professional goals
             </p>
           </div>
 
@@ -147,13 +147,16 @@ const About = () => {
 </div>
 
               <h3 className="text-3xl font-bold text-foreground mb-2">
-                Chris Pathfinder
+              Priscilla Ramani (M.A., B.Ed.)
               </h3>
               <p className="text-primary font-semibold mb-4">
                 Founder & Senior Career Counselor
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                With 14+ years of experience in career counseling and professional development, Chris has dedicated his career to helping individuals discover their potential and achieve their professional aspirations. He holds certifications in career counseling and specializes in psychometric assessments and career transition strategies.
+               I am a passionate Career Counsellor (M.A., B.Ed.) with 18+ years of teaching experience in junior colleges and schools. Having completed multiple certification courses through the Government of Maharashtra and private institutes, I combine expertise with empathy to guide students in discovering their true potential.
+              </p>
+              <p>
+                
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Certified Career Counselor</span>

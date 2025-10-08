@@ -1,73 +1,76 @@
-# Welcome to your Lovable project
+Pathfinder Career Guidance Website
+This is a full-stack web application for Pathfinder, a career guidance service. The frontend is built with React, Vite, and Shadcn UI, and the backend is a Node.js/Express server that handles form submissions.
 
-## Project info
+Features
+Modern Frontend: Built with React, TypeScript, and Vite for a fast development experience.
+Responsive UI: Styled with Tailwind CSS and Shadcn UI for a clean, responsive, and accessible user interface.
+Contact Form: A fully functional contact form that sends email notifications using Nodemailer.
+reCAPTCHA Protection: The form is secured with Google reCAPTCHA v2 to prevent spam.
+Node.js Backend: A simple and efficient Express.js server to handle API requests.
+Concurrent Development: The frontend and backend can be run simultaneously with a single command.
 
-**URL**: https://lovable.dev/projects/c8d299c6-fa16-4039-85a1-d12eacc9a0b1
+Tech Stack:
+Category:	Technology
+Frontend:	React, TypeScript, Vite, Tailwind CSS, Shadcn UI
+Backend:	    Node.js, Express.js
+Emailing:	Nodemailer
+Security:	Google reCAPTCHA v2, CORS
+Utilities:	concurrently, dotenv, axios
 
-## How can I edit this code?
+Prerequisites
+Before you begin, ensure you have the following installed on your system:
 
-There are several ways of editing your application.
+Node.js (v18 or later recommended)
+npm (usually comes with Node.js)
 
-**Use Lovable**
+🚀 Getting Started
+Follow these steps to get the project up and running on your local machine.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c8d299c6-fa16-4039-85a1-d12eacc9a0b1) and start prompting.
+1. Clone the Repository
 
-Changes made via Lovable will be committed automatically to this repo.
+git clone <your-repository-url>
+cd pathfinder-ai-shine
 
-**Use your preferred IDE**
+2. Install Dependencies
+Install all the necessary packages for both the frontend and backend.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. Set Up Environment Variables
+You need to create a .env file in the root of the project to store your secret keys and configuration.
+Create a new file named .env in the project's root directory.
+Copy the content from the example below and paste it into your new .env file.
+Replace the placeholder values with your actual credentials.
 
-Follow these steps:
+# .env file
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# --- Server Configuration ---
+PORT=5000
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# --- Email Configuration (Get these from your email provider) ---
+SMTP_HOST=your-smtp-host.com
+SMTP_PORT=465
+EMAIL_USER=info@yourdomain.com
+EMAIL_PASS=your-email-password
+ADMIN_EMAIL=email-to-receive-notifications@example.com
 
-# Step 3: Install the necessary dependencies.
-npm i
+# --- Google reCAPTCHA v2 Keys ---
+RECAPTCHA_V2_SECRET_KEY=your-recaptcha-v2-secret-key
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Important: You also need to add your reCAPTCHA Site Key to the frontend files where the ReCAPTCHA component is used (Contact.tsx and EmailFormModel.tsx).
 
-**Edit a file directly in GitHub**
+🏃‍♀️ Running the Application
+To run both the frontend and backend servers at the same time, use the following command:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+npm start
 
-**Use GitHub Codespaces**
+This will:
+Start the Vite frontend development server (usually on http://localhost:8080).
+Start the Node.js backend server (on http://localhost:5000).
+Your website should now be running and fully functional on your local machine.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c8d299c6-fa16-4039-85a1-d12eacc9a0b1) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Available Scripts:
+npm start: Runs both the frontend and backend concurrently.
+npm run dev: Runs only the frontend Vite server.
+npm run start:backend: Runs only the backend Node.js server.
+npm run build: Builds the React application for production.

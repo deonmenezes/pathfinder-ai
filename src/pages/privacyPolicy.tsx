@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
             Privacy Policy
           </h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-            Chris Pathfinders — Effective Date: August 20, 2025
+            Chris Pathfinders — Effective Date: August 20, 20
           </p>
         </div>
       </section>

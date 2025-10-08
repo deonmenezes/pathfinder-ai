@@ -17,11 +17,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Brand Colors (updated to #660066) */
-    --primary: 300 100% 20%;        /* #660066 main */
+    /* Brand Colors (matched to logo #6B1D4F) */
+    --primary: 320 55% 26%;        /* main purple */
     --primary-foreground: 0 0% 100%; /* white text */
-    --primary-light: 300 100% 30%;   /* lighter purple */
-    --primary-dark: 300 100% 10%;    /* darker purple */
+    --primary-light: 320 55% 36%;   /* lighter purple */
+    --primary-dark: 320 55% 16%;    /* darker purple */
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -37,7 +37,7 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 300 100% 20%;
+    --ring: 320 55% 26%;
 
     /* Design System Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
@@ -74,7 +74,7 @@ All colors MUST be HSL.
     --popover-foreground: 210 40% 98%;
 
     /* Keep brand purple in dark mode as accent */
-    --primary: 300 100% 20%;         /* #660066 */
+    --primary: 320 55% 26%;         /* logo purple */
     --primary-foreground: 0 0% 100%; /* white text */
 
     --secondary: 217.2 32.6% 17.5%;
@@ -91,10 +91,11 @@ All colors MUST be HSL.
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 300 100% 20%;
+    --ring: 320 55% 26%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 300 100% 20%;  /* brand purple */
+    --sidebar-primary: 320 55% 26%;  /* logo purple */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;

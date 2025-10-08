@@ -1,235 +1,4 @@
-// import Header from "@/components/Header";
-// import Footer from "@/components/Footer";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { Star, Quote } from "lucide-react";
-
-// // Import testimonial images
-// import testimonial1 from "@/assets/testimonial-1.jpg";
-// import testimonial2 from "@/assets/testimonial-2.jpg";
-// import testimonial3 from "@/assets/testimonial-3.jpg";
-// import testimonial4 from "@/assets/testimonial-4.jpg";
-// import testimonial5 from "@/assets/testimonial-5.jpg";
-// import testimonial6 from "@/assets/testimonial-6.jpg";
-// import EmailFormModal from "./EmailFormModel";
-
-// const Testimonials = () => {
-//   const testimonials = [
-//     {
-//       id: 1,
-//       name: "Michael Chen",
-//       role: "Software Engineer",
-//       company: "Tech Innovations Inc.",
-//       image: testimonial1,
-//       rating: 5,
-//       testimonial: "Chris Pathfinder completely transformed my career trajectory. Their guidance helped me transition from a junior developer to a senior software engineer at a Fortune 500 company. The personalized approach and industry insights were invaluable."
-//     },
-//     {
-//       id: 2,
-//       name: "Sarah Williams",
-//       role: "Marketing Director",
-//       company: "Global Marketing Solutions",
-//       image: testimonial2,
-//       rating: 5,
-//       testimonial: "The career coaching sessions were exactly what I needed. Chris helped me identify my strengths and navigate a complex industry transition. I'm now leading a team of 15 professionals and couldn't be happier with my career growth."
-//     },
-//     {
-//       id: 3,
-//       name: "David Rodriguez",
-//       role: "Financial Analyst",
-//       company: "Investment Partners LLC",
-//       image: testimonial3,
-//       rating: 5,
-//       testimonial: "From resume optimization to interview preparation, Chris Pathfinder provided comprehensive support throughout my job search. I received multiple offers and landed my dream job in investment banking. Highly recommended!"
-//     },
-//     {
-//       id: 4,
-//       name: "Emily Thompson",
-//       role: "Product Manager",
-//       company: "Innovation Labs",
-//       image: testimonial4,
-//       rating: 5,
-//       testimonial: "The career assessment and planning services opened my eyes to opportunities I never considered. Chris's expertise in product management helped me secure a role at a leading tech startup with 40% salary increase."
-//     },
-//     {
-//       id: 5,
-//       name: "James Anderson",
-//       role: "Data Scientist",
-//       company: "Analytics Pro",
-//       image: testimonial5,
-//       rating: 5,
-//       testimonial: "Chris Pathfinder's guidance was instrumental in my career pivot from academia to industry. The structured approach and ongoing support helped me land a senior data scientist role within 3 months of starting the program."
-//     },
-//     {
-//       id: 6,
-//       name: "Lisa Park",
-//       role: "Operations Manager",
-//       company: "Logistics Excellence",
-//       image: testimonial6,
-//       rating: 5,
-//       testimonial: "The LinkedIn optimization and networking strategies provided by Chris were game-changers. I went from having few professional connections to building a strong network that led to multiple career opportunities."
-//     }
-//   ];
-
-//   const testimonialImages = [
-//     { image: testimonial1, position: "top-10 left-10" },
-//     { image: testimonial2, position: "top-24 right-16" },
-//     { image: testimonial3, position: "top-40 left-24" },
-//     { image: testimonial4, position: "top-56 right-8" },
-//     { image: testimonial5, position: "top-72 left-8" },
-//     { image: testimonial6, position: "top-96 right-20" }
-//   ];
-
-//   return (
-//     <div className="min-h-screen bg-background">
-//       <Header />
-      
-//       <main className="py-20">
-//         {/* Hero Section with Floating Images */}
-//         <section className="relative bg-muted/30 py-32 overflow-hidden">
-//           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-glow/10"></div>
-          
-//           {/* Floating Testimonial Images */}
-//           <div className="absolute inset-0 hidden lg:block">
-//             {testimonialImages.map((item, index) => (
-//               <div
-//                 key={index}
-//                 className={`absolute ${item.position} animate-fade-in`}
-//                 style={{ animationDelay: `${index * 0.2}s` }}
-//               >
-//                 <div className="relative group">
-//                   <div className="w-20 h-20 rounded-xl overflow-hidden shadow-elegant hover-scale">
-//                     <img
-//                       src={item.image}
-//                       alt={`Testimonial ${index + 1}`}
-//                       className="w-full h-full object-cover"
-//                     />
-//                   </div>
-//                   <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-primary rounded-full flex items-center justify-center">
-//                     <Star className="w-3 h-3 text-white fill-current" />
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-          
-//           {/* Center Content */}
-//           <div className="relative z-10 container mx-auto px-4 text-center">
-//             <div className="max-w-4xl mx-auto">
-//               <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-//                 Testimonials
-//               </div>
-              
-//               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-//                 Trusted by <span className="text-primary">leaders</span>
-//                 <br />
-//                 <span className="text-muted-foreground">from various industries</span>
-//               </h1>
-              
-//               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-//                 Learn why professionals trust our solutions to accelerate their career journeys and achieve their professional goals.
-//               </p>
-              
-//               <Button 
-//                 className="bg-gradient-primary hover:opacity-90 transition-opacity"
-//                 size="lg"
-//               >
-//                 Read Success Stories →
-//               </Button>
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* Testimonials Grid */}
-//         <section className="py-20">
-//           <div className="container mx-auto px-4">
-//             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//               {testimonials.map((testimonial, index) => (
-//                 <Card 
-//                   key={testimonial.id} 
-//                   className="hover-scale animate-fade-in border-0 shadow-elegant bg-card/80 backdrop-blur-sm"
-//                   style={{ animationDelay: `${index * 0.1}s` }}
-//                 >
-//                   <CardContent className="p-8">
-//                     <div className="flex items-center mb-6">
-//                       <div className="relative">
-//                         <img
-//                           src={testimonial.image}
-//                           alt={testimonial.name}
-//                           className="w-16 h-16 rounded-full object-cover"
-//                         />
-//                         <div className="absolute -top-2 -right-2">
-//                           <Quote className="w-8 h-8 text-primary/20 fill-current" />
-//                         </div>
-//                       </div>
-//                       <div className="ml-4">
-//                         <h3 className="font-semibold text-foreground">{testimonial.name}</h3>
-//                         <p className="text-sm text-primary font-medium">{testimonial.role}</p>
-//                         <p className="text-xs text-muted-foreground">{testimonial.company}</p>
-//                       </div>
-//                     </div>
-                    
-//                     {/* Rating */}
-//                     <div className="flex items-center mb-4">
-//                       {[...Array(testimonial.rating)].map((_, i) => (
-//                         <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-//                       ))}
-//                     </div>
-                    
-//                     <p className="text-muted-foreground leading-relaxed">
-//                       "{testimonial.testimonial}"
-//                     </p>
-//                   </CardContent>
-//                 </Card>
-//               ))}
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* CTA Section */}
-//         <section className="py-20 bg-gradient-to-br from-primary/5 to-primary-glow/10">
-//           <div className="container mx-auto px-4 text-center">
-//             <div className="max-w-3xl mx-auto">
-//               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-//                 Ready to <span className="text-primary">transform</span> your career?
-//               </h2>
-//               <p className="text-lg text-muted-foreground mb-8">
-//                 Join thousands of professionals who have accelerated their careers with our expert guidance and personalized approach.
-//               </p>
-//               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-               
-
-//                  <EmailFormModal
-//                   trigger={
-//                  <Button 
-//                   className="bg-gradient-primary hover:opacity-90 transition-opacity"
-//                   size="lg"
-//                 >
-//                      Book Free Consultation
-//                       </Button>
-//     }
-//   />
-
-//                 <Button 
-//                   variant="outline" 
-//                   size="lg"
-//                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-//                 >
-//                   View Success Stories
-//                 </Button>
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-//       </main>
-      
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default Testimonials;
-
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -237,201 +6,145 @@ import { Button } from "@/components/ui/button";
 import { Star, Quote } from "lucide-react";
 
 // Import testimonial images
-import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
-import testimonial5 from "@/assets/testimonial-5.jpg";
 import testimonial6 from "@/assets/testimonial-6.jpg";
+import testimonia20 from "@/assets/testimonial-7.jpg";
+import testimonia21 from "@/assets/testimonial-8.jpg";
+import testimonia22 from "@/assets/testimonial-9.jpg";
 import EmailFormModal from "./EmailFormModel";
 import "./testimonials.css";
+
 const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Michael Chen",
-      role: "Software Engineer",
-      company: "Tech Innovations Inc.",
-      image: testimonial1,
-      rating: 5,
-      testimonial:
-        "Chris Pathfinder completely transformed my career trajectory. Their guidance helped me transition from a junior developer to a senior software engineer at a Fortune 500 company. The personalized approach and industry insights were invaluable.",
-    },
-    {
-      id: 2,
-      name: "Sarah Williams",
-      role: "Marketing Director",
-      company: "Global Marketing Solutions",
+      name: "Jasmine Nadar",
+      role: "Student of Ace Classes",
       image: testimonial2,
       rating: 5,
       testimonial:
-        "The career coaching sessions were exactly what I needed. Chris helped me identify my strengths and navigate a complex industry transition. I'm now leading a team of 15 professionals and couldn't be happier with my career growth.",
+        "The Psychometric Test helped me gain a deeper understanding of my strengths, interests, and hidden traits. It gave me clarity about myself and my career direction. Above all, it was truly an eye-opener for my parents, who now better understand my abilities and aspirations. This experience has made me more confident about my future choices",
     },
     {
-      id: 3,
-      name: "David Rodriguez",
-      role: "Financial Analyst",
-      company: "Investment Partners LLC",
+      id: 2,
+      name: "Aaron Samuel",
+      role: "IT Graduate",
       image: testimonial3,
       rating: 5,
       testimonial:
-        "From resume optimization to interview preparation, Chris Pathfinder provided comprehensive support throughout my job search. I received multiple offers and landed my dream job in investment banking. Highly recommended!",
+        "After completing my B.Sc. IT, I was clueless for almost six months and didn’t know what to do next. Taking the Psychometric Test was a turning point—it revealed my interest in Cloud Computing. With that clarity, I explored opportunities and found a free AWS course, which I have now joined to build my skills. This test gave me the direction I was searching for.",
     },
     {
-      id: 4,
-      name: "Emily Thompson",
-      role: "Product Manager",
-      company: "Innovation Labs",
-      image: testimonial4,
-      rating: 5,
-      testimonial:
-        "The career assessment and planning services opened my eyes to opportunities I never considered. Chris's expertise in product management helped me secure a role at a leading tech startup with 40% salary increase.",
-    },
-    {
-      id: 5,
-      name: "James Anderson",
-      role: "Data Scientist",
-      company: "Analytics Pro",
-      image: testimonial5,
-      rating: 5,
-      testimonial:
-        "Chris Pathfinder's guidance was instrumental in my career pivot from academia to industry. The structured approach and ongoing support helped me land a senior data scientist role within 3 months of starting the program.",
-    },
-    {
-      id: 6,
-      name: "Lisa Park",
-      role: "Operations Manager",
-      company: "Logistics Excellence",
+      id: 3,
+      name: "Aaryan Jadhav",
+      role: "Student",
       image: testimonial6,
       rating: 5,
       testimonial:
-        "The LinkedIn optimization and networking strategies provided by Chris were game-changers. I went from having few professional connections to building a strong network that led to multiple career opportunities.",
+        "I have always been dedicated to my studies and wanted to choose the right career path early. The Psychometric Test gave me clarity and confidence about my strengths and interests. With Chris Pathfinder guidance, I decided to pursue MPSC and have already joined classes for competitive exams along with my college studies. This test helped me align my passion with a purposeful career",
+    },
+    {
+      id: 4,
+      name: "Jyoti Gohil",
+      role: "Parent",
+      image: testimonial4,
+      rating: 5,
+      testimonial:
+        "My son, Abhishak Gohil, a student of 10th standard, took the psychometric test to understand his strengths, motivation, study pattern, and learning style. The assessment gave him great self-awareness and clarity about his abilities. As a parent, I am very much satisfied with the detailed insights and guidance provided by Chris Pathfinder through the test. It has given us a clear direction and confidence for his future studies.",
+    },
+    {
+      id: 5,
+      name: "Anjali",
+      role: "Parent",
+      image: testimonia20,
+      rating: 5,
+      testimonial:
+     `I recently had the pleasure of using Chris Pathfinder's services, 
+      and I couldn't be more impressed! The quick service they provide is unmatched, ensuring you get timely assistance without compromising quality. Their highly experienced team brings a wealth of knowledge to the table, making every interaction smooth and efficir you're looking for 
+      reliable support with a personal touch.
+      Chris Pathfinder is the way to go! Highly recommend!`,
+    },
+    {
+      id: 6,
+      name: "Aman Wakle",
+      role: "Student",
+      image: testimonia21,
+      rating: 5,
+      testimonial:
+         `The tests were well-structured and gave me a clear understanding of my strengths, interests, and potential career paths. The counseling session that followed was insightful, with personalized guidance that helped me make informed decisions about my future.
+The career planning process was also well-organized, providing me with practical steps to move forward. Overall, the service was professional, informative, and genuinely beneficial. I appreciate the support and would highly recommend Chris Pathfinder to anyone seeking career clarity and direction`
+    },
+    {
+      id: 7,
+      name: "Suraiya Ansari",
+      role: "Parent",
+      image: testimonia22,
+      rating: 5,
+      testimonial:
+     `I consulted them for my daughter and had a very nice experience. I appreciate the way each and every detail was explained and all her queries was solved.
+The counselor is very experienced and counseling session was excellent. Highly recommended.`,
     },
   ];
 
-  const testimonialImages = [
-    { image: testimonial1, position: "top-10 left-10" },
-    { image: testimonial2, position: "top-24 right-16" },
-    { image: testimonial3, position: "top-40 left-24" },
-    { image: testimonial4, position: "top-56 right-8" },
-    { image: testimonial5, position: "top-72 left-8" },
-    { image: testimonial6, position: "top-96 right-20" },
-  ];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="py-20">
-        {/* Hero Section with Floating Images */}
-        <section className="relative bg-muted/30 py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-glow/10"></div>
-
-          {/* Floating Testimonial Images */}
-          <div className="absolute inset-0 hidden lg:block">
-            {testimonialImages.map((item, index) => (
-              <div
-                key={index}
-                className={`absolute ${item.position} animate-fade-in`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="relative group">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden shadow-elegant hover-scale">
-                    <img
-                      src={item.image}
-                      alt={`Testimonial ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-primary rounded-full flex items-center justify-center">
-                    <Star className="w-3 h-3 text-white fill-current" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Center Content */}
-          <div className="relative z-10 container mx-auto px-4 text-center">
-            <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                Testimonials
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Trusted by <span className="text-primary">leaders</span>
-                <br />
-                <span className="text-muted-foreground">
-                  from various industries
-                </span>
-              </h1>
-
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Learn why professionals trust our solutions to accelerate their
-                career journeys and achieve their professional goals.
-              </p>
-
-              <Button
-                className="bg-gradient-primary hover:opacity-90 transition-opacity"
-                size="lg"
-              >
-                Read Success Stories →
-              </Button>
-            </div>
+      <main>
+        {/* Hero Section */}
+        <section className="bg-gradient-primary text-primary-foreground py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Testimonials</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+              Learn why professionals trust our solutions to accelerate their
+              career journeys and achieve their professional goals.
+            </p>
           </div>
         </section>
 
-        {/* 🔥 Changed: Testimonials Horizontal Scroll */}
+        {/* Testimonials Section */}
         <section className="py-20 overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="flex gap-6 animate-scroll">
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="min-w-[280px] max-w-[280px] flex-shrink-0 hover-scale border-0 shadow-elegant bg-card/80 backdrop-blur-sm"
-                >
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="relative">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                        <div className="absolute -top-2 -right-2">
-                          <Quote className="w-8 h-8 text-primary/20 fill-current" />
-                        </div>
-                      </div>
-                      <div className="ml-4">
-                        <h3 className="font-semibold text-foreground">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-sm text-primary font-medium">
-                          {testimonial.role}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {testimonial.company}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Rating */}
-                    <div className="flex items-center mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4 text-yellow-400 fill-current"
-                        />
-                      ))}
-                    </div>
-
-                    <p className="text-muted-foreground leading-relaxed">
-                      "{testimonial.testimonial}"
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            {/* Desktop → continuous scroll */}
+            {!isMobile ? (
+              <div className="flex gap-6 animate-scroll">
+                {[...testimonials, ...testimonials].map((testimonial, index) => (
+                  <Card
+                    key={index}
+                    className="min-w-[280px] max-w-[280px] flex-shrink-0 hover-scale border-0 shadow-elegant bg-card/80 backdrop-blur-sm"
+                  >
+                    <CardContent className="p-8">
+                      <TestimonialCard testimonial={testimonial} />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              // Mobile → Centered grid with proper spacing
+              <div className="grid grid-cols-1 gap-8 justify-items-center">
+                {testimonials.map((testimonial) => (
+                  <Card
+                    key={testimonial.id}
+                    className="w-full max-w-[340px] border-0 shadow-elegant bg-card/80 backdrop-blur-sm"
+                  >
+                    <CardContent className="p-6 sm:p-8">
+                      <TestimonialCard testimonial={testimonial} />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -440,8 +153,7 @@ const Testimonials = () => {
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to <span className="text-primary">transform</span> your
-                career?
+                Ready to <span className="text-primary">transform</span> your career?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Join thousands of professionals who have accelerated their
@@ -455,13 +167,6 @@ const Testimonials = () => {
                     </Button>
                   }
                 />
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                >
-                  View Success Stories
-                </Button>
               </div>
             </div>
           </div>
@@ -472,5 +177,38 @@ const Testimonials = () => {
     </div>
   );
 };
+
+// Extracted testimonial card UI
+const TestimonialCard = ({ testimonial }) => (
+  <>
+    <div className="flex items-center mb-6">
+      <div className="relative">
+        <img
+          src={testimonial.image}
+          alt={testimonial.name}
+          className="w-16 h-16 rounded-full object-cover"
+        />
+        <div className="absolute -top-2 -right-2">
+          <Quote className="w-8 h-8 text-primary/20 fill-current" />
+        </div>
+      </div>
+      <div className="ml-4">
+        <h3 className="font-semibold text-foreground">{testimonial.name}</h3>
+        <p className="text-sm text-primary font-medium">{testimonial.role}</p>
+      </div>
+    </div>
+
+    {/* Rating */}
+    <div className="flex items-center mb-4">
+      {[...Array(testimonial.rating)].map((_, i) => (
+        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+      ))}
+    </div>
+
+    <p className="text-muted-foreground leading-relaxed">
+      "{testimonial.testimonial}"
+    </p>
+  </>
+);
 
 export default Testimonials;

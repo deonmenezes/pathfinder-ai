@@ -1,16 +1,14 @@
-import React from 'react'
-import { ChevronDown, Search } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import React from 'react';
+import { ChevronsUpDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import EmailFormModal from './EmailFormModel'
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import EmailFormModal from './EmailFormModel';
 
 const careerCategories = [
   {
@@ -110,7 +108,7 @@ const careerCategories = [
   },
   {
     id: 'arts-design',
-    title: 'Arts and Design',
+    title: 'Arts & Design',
     icon: '🎨',
    careers : [
   "Stage Manager",
@@ -160,7 +158,7 @@ const careerCategories = [
   },
   {
     id: 'agriculture',
-    title: 'Agriculture and Natural Resources',
+    title: 'Agriculture & Natural Resources',
     icon: '🌾',
   careers :[
   "Ranch Manager",
@@ -193,7 +191,7 @@ const careerCategories = [
   },
   {
     id: 'robotics',
-    title: 'Robotics and Automation',
+    title: 'Robotics & Automation',
     icon: '🤖',
     careers :[
   "Robotics Account Manager",
@@ -216,7 +214,7 @@ const careerCategories = [
   },
   {
     id: 'transportation',
-    title: 'Transportation and Logistics',
+    title: 'Transportation & Logistics',
     icon: '🚛',
    careers : [
   "Water Transportation Operator",
@@ -310,7 +308,7 @@ const careerCategories = [
   },
   {
     id: 'business-finance',
-    title: 'Business and Finance',
+    title: 'Business & Finance',
     icon: '💼',
      careers :[
   "Operations Manager",
@@ -344,7 +342,7 @@ const careerCategories = [
   },
   {
     id: 'finance-economics',
-    title: 'Finance and Economics',
+    title: 'Finance & Economics',
     icon: '📈',
    careers : [
   "Investment Analyst",
@@ -372,7 +370,7 @@ const careerCategories = [
   },
   {
     id: 'business-management',
-    title: 'Business and Management',
+    title: 'Business & Management',
     icon: '👔',
     careers : [
   "Quality Assurance Manager",
@@ -406,7 +404,7 @@ const careerCategories = [
   },
   {
     id: 'media-communications',
-    title: 'Media and Communications',
+    title: 'Media & Communications',
     icon: '📺',
     careers : [
   "Media Consultant",
@@ -505,7 +503,7 @@ const careerCategories = [
   },
   {
     id: 'sports-recreation',
-    title: 'Sports and Recreation',
+    title: 'Sports & Recreation',
     icon: '⚽',
   careers : [
   "E-sports Player",
@@ -568,7 +566,7 @@ const careerCategories = [
   },
   {
     id: 'animal-care',
-    title: 'Animal Care and Farming',
+    title: 'Animal Care & Farming',
     icon: '🐄',
      careers : [
   "Agricultural Engineer",
@@ -630,7 +628,7 @@ const careerCategories = [
   },
   {
     id: 'social-services',
-    title: 'Social Services and Counselling',
+    title: 'Social Services & Counselling',
     icon: '🤝',
     careers : [
   "Life Coach",
@@ -663,7 +661,7 @@ const careerCategories = [
   },
   {
     id: 'sales-management',
-    title: 'Sales and Management',
+    title: 'Sales & Management',
     icon: '📊',
      careers : [
   "Book Publishing Professional",
@@ -694,7 +692,7 @@ const careerCategories = [
   },
   {
     id: 'music-entertainment',
-    title: 'Music and Entertainment',
+    title: 'Music & Entertainment',
     icon: '🎵',
    careers : [
   "Film Music Composer",
@@ -849,7 +847,7 @@ const careerCategories = [
   },
   {
     id: 'hospitality-tourism',
-    title: 'Hospitality and Tourism',
+    title: 'Hospitality & Tourism',
     icon: '🏨',
       careers : [
   "Glamping Operator",
@@ -882,7 +880,7 @@ const careerCategories = [
   },
   {
     id: 'food-culinary',
-    title: 'Food and Culinary Art',
+    title: 'Food & Culinary Art',
     icon: '👨‍🍳',
   careers : [
   "Chef",
@@ -920,7 +918,7 @@ const careerCategories = [
   },
   {
     id: 'sales-marketing',
-    title: 'Sales and Marketing',
+    title: 'Sales & Marketing',
     icon: '📈',
       careers :[
   "Email Marketing Specialist",
@@ -952,7 +950,7 @@ const careerCategories = [
   },
   {
     id: 'politics-law',
-    title: 'Politics and Law',
+    title: 'Politics & Law',
     icon: '⚖️',
       careers :[
   "Forensic Accountant",
@@ -975,7 +973,7 @@ const careerCategories = [
 
   {
     id: 'media-performing',
-    title: 'Media and Performing Arts',
+    title: 'Media & Performing Arts',
     icon: '🎭',
     careers :[
   "Film Editor",
@@ -1009,8 +1007,8 @@ const careerCategories = [
 
   },
   {
-    id: 'law-and-public-policy',
-    title: 'Law and Public Policy',
+    id: 'law-&-public-policy',
+    title: 'Law & Public Policy',
    icon: '🏛️',
   careers : [
   'Tax Attorney',
@@ -1073,8 +1071,8 @@ const careerCategories = [
 
   },
   {
-    id: 'Beauty-and-Personal-Care',
-    title: 'Beauty and Personal Care',
+    id: 'Beauty-&-Personal-Care',
+    title: 'Beauty & Personal Care',
     icon: '💇‍♀️',
   careers :[
   'Hair Color Specialist',
@@ -1106,8 +1104,8 @@ const careerCategories = [
   },
 
   {
-    id: 'Administration-and-Management',
-    title: 'Administration and Management',
+    id: 'Administration-&-Management',
+    title: 'Administration & Management',
     icon: '📋',
    careers :[
   'IT Manager',
@@ -1148,8 +1146,8 @@ const careerCategories = [
 
   },
   {
-    id: 'Marketing-and-Advertising',
-    title: 'Marketing and Advertising',
+    id: 'Marketing-&-Advertising',
+    title: 'Marketing & Advertising',
     icon: '📣',
    careers : [
   'Social Media Marketing',
@@ -1174,8 +1172,8 @@ const careerCategories = [
 
   },
   {
-    id: 'IT-and-Computer-Science',
-    title: 'IT and Computer Science',
+    id: 'IT-&-Computer-Science',
+    title: 'IT & Computer Science',
     icon: '🖥️',
   careers : [
   'Systems Analyst',
@@ -1250,8 +1248,8 @@ const careerCategories = [
 
   },
   {
-    id: 'National-Security-and-Emergency-services',
-    title: 'National Security and Emergency service',
+    id: 'Protective Services',
+    title: 'Protective Services',
     icon: '🛡️',
   careers :[
   'CBI Officer',
@@ -1290,8 +1288,8 @@ const careerCategories = [
 
   },
   {
-    id: 'Travel-and-Tourism',
-    title: 'Travel and Tourism',
+    id: 'Travel-&-Tourism',
+    title: 'Travel & Tourism',
     icon: '✈️',
  careers : [
   'Scuba Diving',
@@ -1350,8 +1348,8 @@ const careerCategories = [
 
   },
   {
-    id: 'Construction-and-Skilled-Trades',
-    title: 'Construction and Skilled Trades',
+    id: 'Construction-&-Skilled-Trades',
+    title: 'Construction & Skilled Trades',
     icon: '🏗️',
    careers : [
   'Construction Engineer',
@@ -1411,8 +1409,8 @@ const careerCategories = [
 
   },
   {
-    id: 'Science-and-Research',
-    title: 'Science and Research',
+    id: 'Science-&-Research',
+    title: 'Science & Research',
     icon: '🔬',
  careers : [
   'Entomologist',
@@ -1660,8 +1658,8 @@ careers : [
 
   },
   {
-    id: 'Manufacturing-and-Production',
-    title: 'Manufacturing and Production',
+    id: 'Manufacturing-&-Production',
+    title: 'Manufacturing & Production',
     icon: '🏭',
  careers : [
   'Millwright',
@@ -1827,8 +1825,8 @@ careers : [
 
   },
   {
-    id: 'Healthcare-and-Medicine',
-    title: 'Healthcare and Medicine',
+    id: 'Healthcare-&-Medicine',
+    title: 'Healthcare & Medicine',
     icon: '🩺',
    careers : [
   "Pathologist",
@@ -1961,8 +1959,8 @@ careers : [
 
   },
   {
-    id: 'Textile-and-Clothing-Industry',
-    title: 'Textile and Clothing Industry',
+    id: 'Textile-&-Clothing-Industry',
+    title: 'Textile & Clothing Industry',
     icon: '🧵',
    careers :[
   "Supervisor",
@@ -2018,125 +2016,93 @@ careers : [
   "General Manager",
   "Finishing quality control"
 ],
-
-
   },
-  
-]
+];
 
 const CareerLibrary: React.FC = () => {
   return (
     <div className='min-h-screen bg-background'>
       <Header />
 
+      <section className="bg-gradient-primary text-primary-foreground py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">Career Library</h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+            Explore over 800+ career opportunities across various fields. Discover your passion and find the perfect career path.
+          </p>
+        </div>
+      </section>
+
       <main className='py-16 bg-gradient-to-br from-background to-secondary/20'>
-        <div className='container mx-auto px-4'>
+        <div className='container mx-auto px-4 sm:px-6'>
           <div className='max-w-6xl mx-auto'>
-            {/* Hero Section */}
             <div className='text-center mb-12'>
-              <h1 className='text-5xl font-bold text-foreground mb-6'>
-                Career{' '}
-                <span className='bg-gradient-primary bg-clip-text text-transparent'>
-                  Library
-                </span>
-              </h1>
-              <p className='text-xl text-muted-foreground mb-8 max-w-3xl mx-auto'>
-                Explore over 800+ career opportunities across 24 different
-                fields. Discover your passion and find the perfect career path
-                with our comprehensive career library.
-              </p>
-
-              {/* Search Bar */}
-              <div className='relative max-w-lg mx-auto mb-8'>
-                <Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5' />
-                <Input
-                  type='text'
-                  placeholder='Search careers by name or field...'
-                  className='pl-12 pr-4 py-4 text-lg rounded-xl border-2 bg-background/50 backdrop-blur-sm'
-                />
-              </div>
-
               <p className='text-sm text-muted-foreground'>
-                Click on any field below to explore all available career options
+                Tap on any field below to explore career options.
               </p>
             </div>
 
-            {/* Career Categories Grid */}
-  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-  {careerCategories.map(category => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    return (
-      <DropdownMenu key={category.id} open={isOpen} onOpenChange={setIsOpen}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant='outline'
-            className='h-auto p-6 justify-start bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 group shadow-md hover:shadow-lg border-2 hover:border-primary/30 w-[380px]'
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-          >
-            <div className='flex items-center space-x-4 w-full'>
-              <div className='text-3xl group-hover:scale-110 transition-transform duration-300'>
-                {category.icon}
-              </div>
-
-              <div className='flex-1 text-left w-max'>
-                <h3 className='font-semibold text-base mb-1'>
+<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'>
+  {careerCategories.map(category => (
+    <Collapsible key={category.id} className="w-full space-y-2">
+      <CollapsibleTrigger asChild>
+        <Button
+          variant='outline'
+          // 👇 CHANGED: Padding is now responsive
+          className='h-auto p-4 md:p-6 bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-300 group shadow-md hover:shadow-lg border-2 hover:border-primary/30 w-full'
+        >
+          <div className='flex items-start justify-between w-full'>
+            <div className="flex items-start space-x-4">
+              {/* 👇 CHANGED: Icon size and top padding are responsive */}
+              <span className="text-2xl md:text-3xl pt-1">{category.icon}</span>
+              <div className="text-left">
+                {/* 👇 CHANGED: Font size is now responsive */}
+                <h3 className='font-semibold text-md md:text-base mb-1 leading-tight break-words'>
                   {category.title}
                 </h3>
-                <p className='text-sm text-muted-foreground'>
+                {/* 👇 CHANGED: Font size is now responsive */}
+                <p className='text-xs sm:text-sm text-muted-foreground'>
                   {category.careers.length}+ Career Options
                 </p>
               </div>
-
-              <ChevronDown className='h-5 w-5 group-hover:rotate-180 transition-transform duration-300 text-primary' />
             </div>
-          </Button>
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent
-          className='w-96 max-h-96 overflow-y-auto bg-popover border-2 shadow-xl rounded-xl'
-          align='start'
-          sideOffset={8}
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <div className='p-3 border-b border-border bg-muted/30'>
-            <h4 className='font-semibold text-foreground flex items-center gap-2'>
-              <span className='text-lg'>{category.icon}</span>
-              {category.title} Careers
-            </h4>
-            <p className='text-xs text-muted-foreground mt-1'>
-              {category.careers.length} career options available
-            </p>
+            <ChevronsUpDown className="h-5 w-5 mt-1 ml-2 flex-shrink-0 text-primary data-[state=open]:rotate-180" />
           </div>
-          {category.careers.map((career, index) => (
-            <DropdownMenuItem
-              key={index}
-              className='cursor-pointer hover:bg-accent hover:text-accent-foreground py-3 px-4 transition-colors duration-200'
-            >
-              <span className='text-sm font-medium'>{career}</span>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  })}
+        </Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="p-4 bg-card border rounded-md shadow-inner max-h-80 overflow-y-auto">
+          <h4 className='font-semibold text-foreground mb-3 text-center'>
+            {category.title} Careers
+          </h4>
+          <div className="space-y-1">
+            {category.careers.map((career, index) => (
+              <div key={index} className="rounded-md hover:bg-accent hover:text-accent-foreground text-sm">
+                <EmailFormModal
+                  trigger={
+                    <span className='cursor-pointer font-medium block w-full text-left p-2'>
+                      {career}
+                    </span>
+                  }
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  ))}
 </div>
 
-
-
-            {/* Additional Info Section */}
             <div className='mt-16 text-center'>
-              <div className='bg-card border-2 border-primary/10 rounded-2xl p-8 max-w-4xl mx-auto'>
+              <div className='bg-card border-2 border-primary/10 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto'>
                 <h2 className='text-2xl font-bold text-foreground mb-4'>
                   Need Personalized Career Guidance?
                 </h2>
                 <p className='text-muted-foreground mb-6'>
-                  Our expert career counselors can help you identify the perfect
+                  Our expert counselors can help you identify the perfect
                   career path based on your interests, skills, and aspirations.
                 </p>
-
                 <EmailFormModal
                   trigger={
                     <Button className='bg-gradient-primary hover:opacity-90 transition-opacity text-lg px-8 py-3'>
@@ -2152,7 +2118,7 @@ const CareerLibrary: React.FC = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default CareerLibrary

@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
   import { Link } from "react-router-dom";
   import logo from "../assets/logo.png";
+  import footerlog from "../assets/footer logo.png"
 import projectName from "../assets/chris.png";
 const Footer = () => {
   return (
@@ -17,15 +18,16 @@ const Footer = () => {
                 </span>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Chris Pathfinder</h3>
-                <p className="text-sm opacity-90">Career Guidance Expert</p>
+                {/* <h3 className="text-xl font-bold">CHRIS PATHFINDER</h3> */}
+                 <img src={footerlog} alt=""  className="w-[215px] h-auto"/>
+                {/* <p className="text-sm opacity-90">Career Guidance Expert</p> */}
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
               Empowering individuals to discover their true potential and build successful careers through expert guidance and scientific assessment.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/share/19UjMAaXXL/" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
+              <a href="https://www.facebook.com/share/19bDabgFgy/" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
               {/* <a href="https://x.com/Chriscounseling?t=EnsUkAZyn-ga17k7K0W5wQ&s=09" className="bg-white/20 hover:bg-white/30 rounded-full p-2 transition-colors">
@@ -111,7 +113,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 opacity-90" />
-                <span className="opacity-90">chris.pathfinder.72@gmail.com</span>
+                <span className="opacity-90">info@chrispathfinder.com</span>
               </div>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
@@ -129,7 +131,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm opacity-90">
-              © 2013 Chris Pathfinder. All rights reserved.
+              © 2025 Chris Pathfinder. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               {/* <a href="#" className="opacity-90 hover:opacity-100 transition-opacity">Privacy Policy</a> */}
