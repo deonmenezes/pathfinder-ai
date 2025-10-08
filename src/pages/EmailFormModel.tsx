@@ -2,6 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent, ReactNode } from "react";
 import ReCAPTCHA from "react-google-recaptcha";  
+import emailjs from '@emailjs/browser';
 import {
   Dialog,
   DialogContent,
@@ -69,18 +70,37 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
     setLoading(true);
 
     try {
-      const response = await fetch("/api/submit-form",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData), // ✅ send captchaToken to backend
-        }
+      // EmailJS configuration
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_x6ka1b8';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_a7yi44v';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9y3JcD65WyL-ug2lS';
+
+      if (!publicKey) {
+        throw new Error('EmailJS is not configured. Please contact the administrator.');
+      }
+
+      // Prepare template parameters
+      const templateParams = {
+        to_email: 'chris.pathfinder.72@gmail.com',
+        from_name: formData.fullName,
+        from_email: formData.email,
+        phone: formData.phone,
+        dob: formData.dob,
+        profession: formData.profession,
+        gender: formData.gender,
+        message: formData.message,
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
       );
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("✅ Message sent successfully!");
+      if (response.status === 200) {
+        alert("✅ Message sent successfully! We will get back to you soon.");
         setFormData({
           fullName: "",
           dob: "",
@@ -92,11 +112,12 @@ const EmailFormModal: React.FC<EmailFormModalProps> = ({
           captchaToken: "",
         });
       } else {
-        alert("❌ Failed: " + data.message);
+        throw new Error('Failed to send message');
       }
-    } catch (error) {
-      console.error(error);
-      alert("❌ Something went wrong!");
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      const errorMessage = error.text || error.message || 'Failed to send message. Please try again.';
+      alert("❌ " + errorMessage);
     } finally {
       setLoading(false);
     }
