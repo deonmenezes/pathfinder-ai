@@ -1,6 +1,6 @@
 // src/pages/Contact.tsx
 
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -10,8 +10,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  
   const [formData, setFormData] = useState({
     fullName: "",
     dob: "",
@@ -47,20 +51,40 @@ const Contact = () => {
     }
 
     setLoading(true);
-    setFormStatus({ message: 'Submitting...', color: 'gray' });
-
+    setFormStatus({ message: 'Sending your message...', color: 'gray' });
 
     try {
-      const response = await fetch("/api/submit-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      // EmailJS configuration - using environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_x6ka1b8';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_a7yi44v';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9y3JcD65WyL-ug2lS';
 
-      const data = await response.json();
+      if (!publicKey) {
+        throw new Error('EmailJS is not configured. Please contact the administrator.');
+      }
 
-      if (response.ok) {
-        setFormStatus({ message: data.message, color: 'green' });
+      // Prepare template parameters
+      const templateParams = {
+        to_email: 'chris.pathfinder.72@gmail.com',
+        from_name: formData.fullName,
+        from_email: formData.email,
+        phone: formData.phone,
+        dob: formData.dob,
+        profession: formData.profession,
+        gender: formData.gender,
+        message: formData.message,
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setFormStatus({ message: 'Message sent successfully! We will get back to you soon.', color: 'green' });
         setFormData({
           fullName: "",
           dob: "",
@@ -71,11 +95,15 @@ const Contact = () => {
           message: "",
           captchaToken: "",
         });
+        // Reset reCAPTCHA
+        recaptchaRef.current?.reset();
       } else {
-        throw new Error(data.message);
+        throw new Error('Failed to send message');
       }
     } catch (error: any) {
-      setFormStatus({ message: error.message || 'An error occurred.', color: 'red' });
+      console.error('Form submission error:', error);
+      const errorMessage = error.text || error.message || 'Failed to send message. Please try again.';
+      setFormStatus({ message: errorMessage, color: 'red' });
     } finally {
       setLoading(false);
     }
@@ -140,8 +168,8 @@ const Contact = () => {
               </p>
             </div>
 
-            <Card className="p-4 sm:p-8 border-0 shadow-elegant shadow-lg">
-              <form className="space-y-6" onSubmit={handleSubmit}>
+            <Card className="p-4 sm:p-8 border-0 shadow-lg">
+              <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="fullName"> Name</Label>
@@ -186,7 +214,11 @@ const Contact = () => {
                   <Textarea id="message" name="message" placeholder="Tell us about your career goals and how we can help you..." value={formData.message} onChange={handleChange} className="min-h-[120px]" />
                 </div>
                 <div className="flex justify-center">
-                  <ReCAPTCHA sitekey="6LdTeN4rAAAAADytWSvmwLDpVCMiqBMjvHO9tedM" onChange={handleCaptchaChange} />
+                  <ReCAPTCHA 
+                    ref={recaptchaRef}
+                    sitekey="6LdTeN4rAAAAADytWSvmwLDpVCMiqBMjvHO9tedM" 
+                    onChange={handleCaptchaChange} 
+                  />
                 </div>
                 <div className="text-center">
                   <Button type="submit" size="lg" className="bg-gradient-primary hover:opacity-90 px-8" disabled={loading}>
