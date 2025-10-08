@@ -30,7 +30,6 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [formStatus, setFormStatus] = useState({ message: '', color: '' });
 
-
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -45,6 +44,12 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Validation
+    if (!formData.fullName || !formData.email || !formData.message) {
+      setFormStatus({ message: 'Please fill in all required fields.', color: 'red' });
+      return;
+    }
+
     if (!formData.captchaToken) {
       setFormStatus({ message: 'Please complete the reCAPTCHA.', color: 'red' });
       return;
@@ -54,37 +59,51 @@ const Contact = () => {
     setFormStatus({ message: 'Sending your message...', color: 'gray' });
 
     try {
-      // EmailJS configuration - using environment variables
+      // EmailJS configuration
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_x6ka1b8';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_a7yi44v';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9y3JcD65WyL-ug2lS';
 
-      if (!publicKey) {
-        throw new Error('EmailJS is not configured. Please contact the administrator.');
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Missing' });
+
+      if (!publicKey || !serviceId || !templateId) {
+        throw new Error('EmailJS configuration is incomplete. Please check your environment variables.');
       }
 
-      // Prepare template parameters
+      // Prepare template parameters - match your EmailJS template variables
       const templateParams = {
         to_email: 'chris.pathfinder.72@gmail.com',
         from_name: formData.fullName,
         from_email: formData.email,
-        phone: formData.phone,
-        dob: formData.dob,
-        profession: formData.profession,
-        gender: formData.gender,
+        phone: formData.phone || 'Not provided',
+        dob: formData.dob || 'Not provided',
+        profession: formData.profession || 'Not provided',
+        gender: formData.gender || 'Not provided',
         message: formData.message,
+        reply_to: formData.email, // Important for EmailJS
       };
+
+      console.log('Sending email with params:', templateParams);
+
+      // Initialize EmailJS if not already done
+      emailjs.init(publicKey);
 
       // Send email using EmailJS
       const response = await emailjs.send(
         serviceId,
         templateId,
-        templateParams,
-        publicKey
+        templateParams
       );
 
+      console.log('EmailJS Response:', response);
+
       if (response.status === 200) {
-        setFormStatus({ message: 'Message sent successfully! We will get back to you soon.', color: 'green' });
+        setFormStatus({ 
+          message: 'Message sent successfully! We will get back to you soon.', 
+          color: 'green' 
+        });
+        
+        // Reset form
         setFormData({
           fullName: "",
           dob: "",
@@ -95,19 +114,46 @@ const Contact = () => {
           message: "",
           captchaToken: "",
         });
+        
         // Reset reCAPTCHA
         recaptchaRef.current?.reset();
+        
+        // Reset form ref if needed
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(`EmailJS returned status ${response.status}`);
       }
+      
     } catch (error: any) {
       console.error('Form submission error:', error);
-      const errorMessage = error.text || error.message || 'Failed to send message. Please try again.';
+      
+      // Better error handling
+      let errorMessage = 'Failed to send message. Please try again.';
+      
+      if (error.text) {
+        // EmailJS error
+        errorMessage = `EmailJS Error: ${error.text}`;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      // Check for specific error types
+      if (error.message?.includes('<!DOCTYPE')) {
+        errorMessage = 'Configuration error: Invalid EmailJS credentials. Please contact the administrator.';
+      } else if (error.message?.includes('429')) {
+        errorMessage = 'Too many requests. Please try again in a few minutes.';
+      } else if (error.message?.includes('401') || error.message?.includes('403')) {
+        errorMessage = 'Authentication failed. Please check EmailJS configuration.';
+      }
+      
       setFormStatus({ message: errorMessage, color: 'red' });
     } finally {
       setLoading(false);
     }
   };
+
   const contactInfo = [
     {
       icon: Phone,
@@ -172,47 +218,124 @@ const Contact = () => {
               <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="fullName"> Name</Label>
-                    <Input id="fullName" name="fullName" placeholder="Enter your full name" value={formData.fullName} onChange={handleChange} />
+                    <Label htmlFor="fullName">Name *</Label>
+                    <Input 
+                      id="fullName" 
+                      name="fullName" 
+                      placeholder="Enter your full name" 
+                      value={formData.fullName} 
+                      onChange={handleChange}
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="dob"> Date of Birth</Label>
-                    <Input id="dob" name="dob" type="date" placeholder="Enter your date of birth" value={formData.dob} onChange={handleChange} />
+                    <Label htmlFor="dob">Date of Birth</Label>
+                    <Input 
+                      id="dob" 
+                      name="dob" 
+                      type="date" 
+                      placeholder="Enter your date of birth" 
+                      value={formData.dob} 
+                      onChange={handleChange} 
+                    />
                   </div>
                 </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} />
+                    <Label htmlFor="email">Email *</Label>
+                    <Input 
+                      id="email" 
+                      name="email" 
+                      type="email" 
+                      placeholder="Enter your email" 
+                      value={formData.email} 
+                      onChange={handleChange}
+                      required 
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" name="phone" type="tel" placeholder="Enter your phone number" value={formData.phone} onChange={handleChange} />
+                    <Input 
+                      id="phone" 
+                      name="phone" 
+                      type="tel" 
+                      placeholder="Enter your phone number" 
+                      value={formData.phone} 
+                      onChange={handleChange} 
+                    />
                   </div>
                 </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="profession">Qualification</Label>
-                    <select id="profession" name="profession" value={formData.profession} onChange={handleChange} className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                    <select 
+                      id="profession" 
+                      name="profession" 
+                      value={formData.profession} 
+                      onChange={handleChange} 
+                      className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
                       <option value="">Select your profession</option>
                       <option value="student">Student</option>
-                      <option value="graduate">Professional</option>
-                      <option value="postgraduate">Clueless Explorer</option>
+                      <option value="professional">Professional</option>
+                      <option value="explorer">Clueless Explorer</option>
                     </select>
                   </div>
                   <div className="space-y-2">
                     <Label>Gender</Label>
                     <div className="flex items-center gap-6 border rounded-lg px-3 py-2 flex-wrap">
-                      <label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="male" checked={formData.gender === "male"} onChange={handleChange} className="accent-primary" />Male</label>
-                      <label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="female" checked={formData.gender === "female"} onChange={handleChange} className="accent-primary" />Female</label>
-                      <label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="transgender" checked={formData.gender === "transgender"} onChange={handleChange} className="accent-primary" />Transgender</label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="gender" 
+                          value="male" 
+                          checked={formData.gender === "male"} 
+                          onChange={handleChange} 
+                          className="accent-primary" 
+                        />
+                        Male
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="gender" 
+                          value="female" 
+                          checked={formData.gender === "female"} 
+                          onChange={handleChange} 
+                          className="accent-primary" 
+                        />
+                        Female
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input 
+                          type="radio" 
+                          name="gender" 
+                          value="transgender" 
+                          checked={formData.gender === "transgender"} 
+                          onChange={handleChange} 
+                          className="accent-primary" 
+                        />
+                        Transgender
+                      </label>
                     </div>
                   </div>
                 </div>
+                
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" placeholder="Tell us about your career goals and how we can help you..." value={formData.message} onChange={handleChange} className="min-h-[120px]" />
+                  <Label htmlFor="message">Message *</Label>
+                  <Textarea 
+                    id="message" 
+                    name="message" 
+                    placeholder="Tell us about your career goals and how we can help you..." 
+                    value={formData.message} 
+                    onChange={handleChange} 
+                    className="min-h-[120px]"
+                    required 
+                  />
                 </div>
+                
                 <div className="flex justify-center">
                   <ReCAPTCHA 
                     ref={recaptchaRef}
@@ -220,21 +343,37 @@ const Contact = () => {
                     onChange={handleCaptchaChange} 
                   />
                 </div>
+                
                 <div className="text-center">
-                  <Button type="submit" size="lg" className="bg-gradient-primary hover:opacity-90 px-8" disabled={loading}>
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="bg-gradient-primary hover:opacity-90 px-8" 
+                    disabled={loading}
+                  >
                     {loading ? "Sending..." : "Send Message"}
                   </Button>
                 </div>
-                 {formStatus.message && (
-                    <p style={{ color: formStatus.color, textAlign: 'center', marginTop: '1rem', fontWeight: 'bold' }}>
-                        {formStatus.message}
-                    </p>
+                
+                {formStatus.message && (
+                  <p style={{ 
+                    color: formStatus.color, 
+                    textAlign: 'center', 
+                    marginTop: '1rem', 
+                    fontWeight: 'bold',
+                    padding: '12px',
+                    borderRadius: '8px',
+                    backgroundColor: formStatus.color === 'green' ? '#d4edda' : formStatus.color === 'red' ? '#f8d7da' : '#f0f0f0'
+                  }}>
+                    {formStatus.message}
+                  </p>
                 )}
               </form>
             </Card>
           </div>
         </div>
       </section>
+      
       <Footer />
     </div>
   );
