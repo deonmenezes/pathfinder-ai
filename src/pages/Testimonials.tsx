@@ -7,11 +7,7 @@ import { Star, Quote } from "lucide-react";
 
 // Import testimonial images
 import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonial3 from "@/assets/testimonial-3.jpg";
 import testimonial4 from "@/assets/testimonial-4.jpg";
-import testimonial6 from "@/assets/testimonial-6.jpg";
-import testimonia20 from "@/assets/testimonial-7.jpg";
-import testimonia21 from "@/assets/testimonial-8.jpg";
 import testimonia22 from "@/assets/testimonial-9.jpg";
 import EmailFormModal from "./EmailFormModel";
 import "./testimonials.css";
@@ -31,7 +27,7 @@ const Testimonials = () => {
       id: 2,
       name: "Aaron Samuel",
       role: "IT Graduate",
-      image: testimonial3,
+      image: "/aaron-samuel.jpg",
       rating: 5,
       testimonial:
         "After completing my B.Sc. IT, I was clueless for almost six months and didn’t know what to do next. Taking the Psychometric Test was a turning point—it revealed my interest in Cloud Computing. With that clarity, I explored opportunities and found a free AWS course, which I have now joined to build my skills. This test gave me the direction I was searching for.",
@@ -40,7 +36,7 @@ const Testimonials = () => {
       id: 3,
       name: "Aaryan Jadhav",
       role: "Student",
-      image: testimonial6,
+      image: "/aaryan jadhav.jpg",
       rating: 5,
       testimonial:
         "I have always been dedicated to my studies and wanted to choose the right career path early. The Psychometric Test gave me clarity and confidence about my strengths and interests. With Chris Pathfinder guidance, I decided to pursue MPSC and have already joined classes for competitive exams along with my college studies. This test helped me align my passion with a purposeful career",
@@ -58,7 +54,7 @@ const Testimonials = () => {
       id: 5,
       name: "Anjali",
       role: "Parent",
-      image: testimonia20,
+      image: "/blank.jpg",
       rating: 5,
       testimonial:
      `I recently had the pleasure of using Chris Pathfinder's services, 
@@ -70,7 +66,7 @@ const Testimonials = () => {
       id: 6,
       name: "Aman Wakle",
       role: "Student",
-      image: testimonia21,
+      image: "/aman-wakle.jpg",
       rating: 5,
       testimonial:
          `The tests were well-structured and gave me a clear understanding of my strengths, interests, and potential career paths. The counseling session that followed was insightful, with personalized guidance that helped me make informed decisions about my future.
