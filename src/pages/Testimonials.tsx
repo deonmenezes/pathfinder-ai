@@ -5,10 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Quote } from "lucide-react";
 
-// Import testimonial images
-import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonial4 from "@/assets/testimonial-4.jpg";
-import testimonia22 from "@/assets/testimonial-9.jpg";
 import EmailFormModal from "./EmailFormModel";
 import "./testimonials.css";
 
@@ -18,7 +14,7 @@ const Testimonials = () => {
       id: 1,
       name: "Jasmine Nadar",
       role: "Student of Ace Classes",
-      image: testimonial2,
+      image: "/blank.jpg",
       rating: 5,
       testimonial:
         "The Psychometric Test helped me gain a deeper understanding of my strengths, interests, and hidden traits. It gave me clarity about myself and my career direction. Above all, it was truly an eye-opener for my parents, who now better understand my abilities and aspirations. This experience has made me more confident about my future choices",
@@ -45,7 +41,7 @@ const Testimonials = () => {
       id: 4,
       name: "Jyoti Gohil",
       role: "Parent",
-      image: testimonial4,
+      image: "/blank.jpg",
       rating: 5,
       testimonial:
         "My son, Abhishak Gohil, a student of 10th standard, took the psychometric test to understand his strengths, motivation, study pattern, and learning style. The assessment gave him great self-awareness and clarity about his abilities. As a parent, I am very much satisfied with the detailed insights and guidance provided by Chris Pathfinder through the test. It has given us a clear direction and confidence for his future studies.",
@@ -76,7 +72,7 @@ The career planning process was also well-organized, providing me with practical
       id: 7,
       name: "Suraiya Ansari",
       role: "Parent",
-      image: testimonia22,
+      image: "/blank.jpg",
       rating: 5,
       testimonial:
      `I consulted them for my daughter and had a very nice experience. I appreciate the way each and every detail was explained and all her queries was solved.
