@@ -16,7 +16,7 @@ const Header = () => {
     { href: '/services', text: 'Services' },
     { href: '/testimonials', text: 'Testimonials' },
     { href: '/career-library', text: 'Career Options' },
-    { href: '/updates', text: 'Updates' },
+   
     { href: '/about', text: 'About Us' },
     { href: '/contact', text: 'Contact Us' },
   ]
