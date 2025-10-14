@@ -41,7 +41,7 @@ const Testimonials = () => {
       id: 4,
       name: "Jyoti Gohil",
       role: "Parent",
-      image: "/blank.jpg",
+      image: "/jyoti-gohil.jpg",
       rating: 5,
       testimonial:
         "My son, Abhishak Gohil, a student of 10th standard, took the psychometric test to understand his strengths, motivation, study pattern, and learning style. The assessment gave him great self-awareness and clarity about his abilities. As a parent, I am very much satisfied with the detailed insights and guidance provided by Chris Pathfinder through the test. It has given us a clear direction and confidence for his future studies.",
