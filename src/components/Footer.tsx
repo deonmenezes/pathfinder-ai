@@ -1,11 +1,51 @@
-import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-  import { Link } from "react-router-dom";
-  import logo from "../assets/logo.png";
-  import footerlog from "../assets/footer logo.png"
-import projectName from "../assets/chris.png";
+import { ExternalLink, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Star } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+import footerlog from "../assets/footer logo.png";
+
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <>
+      <section className="bg-slate-50 border-t border-slate-200" aria-labelledby="review-heading">
+      <div className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-3 flex justify-center gap-1 text-amber-500" aria-hidden="true">
+            {[...Array(5)].map((_, index) => (
+              <Star key={index} className="h-5 w-5 fill-current" />
+            ))}
+          </div>
+          <h2 id="review-heading" className="text-2xl font-bold text-slate-900 md:text-3xl">
+            Happy with your experience?
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+            Your feedback helps families find trusted career guidance. Share your experience on Google or Justdial.
+          </p>
+          <div className="mt-7 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href="https://share.google/ZYUPqrd4Jb9ro9K47"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label="Review Chris Pathfinder on Google (opens in a new tab)"
+            >
+              Review us on Google
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.justdial.com/Mumbai/Chris-Pathfinder-Andheri-East/022PXX22-XX22-250222131135-Y5Q1_BZDET?via=scode"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-primary bg-white px-6 py-3 font-semibold text-primary shadow-sm transition hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              aria-label="Review Chris Pathfinder on Justdial (opens in a new tab)"
+            >
+              Review us on Justdial
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
+      </section>
+      <footer className="bg-primary text-primary-foreground">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -153,7 +193,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 
